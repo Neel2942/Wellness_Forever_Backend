@@ -8,6 +8,6 @@ app.get("/api",(req,res)=>{
     res.json({"users" : ["UserOne","UserTwo"]});
 });
 
-app.listen(port, () => {
-    console.log("App is running at port " + port);
-  });
+// app.listen(port, () => {
+//     console.log("App is running at port " + port);
+//   });
