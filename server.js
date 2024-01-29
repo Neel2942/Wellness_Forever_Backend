@@ -10,4 +10,4 @@ app.get("/api",(req,res)=>{
 
 app.listen(port, () => {
     console.log("App is running at port " + port);
-  });
+});
