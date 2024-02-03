@@ -24,12 +24,39 @@
         };
     
         try {
-            const check = await db.findOne({ email: userdata.email });
+            const check = await patientModel.findOne({ email: userdata.email });
     
             if (check) {
                 res.json("exist");
             } else {
-                await db.insertMany([userdata]);
+                await patientModel.create(userdata);
+                res.json("notexists");
+            }
+        } catch (error) {
+            console.error(error);
+            res.status(500).json("error");
+        }
+    });
+
+
+
+    app.post('/login', async (req, res) => {
+        const userdata = {
+          
+            email: req.body.email,
+            password: req.body.password,
+       
+        };
+    
+        try {
+            console.log("data from frontend",userdata.email);
+            const check = await patientModel.findOne({ email: userdata.email });
+    
+            if (check) {
+                res.json("exist");
+              //  console.log(res);
+            } else {
+              
                 res.json("notexists");
             }
         } catch (error) {
