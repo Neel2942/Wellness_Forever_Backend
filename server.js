@@ -1,4 +1,5 @@
     require('dotenv').config();
+    const bcrypt = require('bcrypt');
     const db =  require('./db/dbinit.js');
     const patientModel = require("./models/patient.js");
     const express = require('express');
@@ -9,6 +10,7 @@
     app.listen(port, () => {
         console.log("App is running at port " + port);
     });
+
     app.post('/signup', async (req, res) => {
         const userdata = {
             firstName: req.body.firstName,
@@ -41,22 +43,22 @@
 
     app.post('/login', async (req, res) => {
         const userdata = {
-          
             email: req.body.email,
             password: req.body.password,
-       
         };
     
         try {
-            console.log("data from frontend",userdata.email);
             const check = await patientModel.findOne({ email: userdata.email });
     
             if (check) {
-                res.json("exist");
-              //  console.log(res);
-            } else {
-              
-                res.json("notexists");
+                const paswordCheck = await bcrypt.compare(userdata.password,check.password);
+                if(paswordCheck){
+                    res.json("exist");
+                } else {
+                    res.json("notExists");
+                }
+            }else{
+                res.json("incorrectPassword");
             }
         } catch (error) {
             console.error(error);
