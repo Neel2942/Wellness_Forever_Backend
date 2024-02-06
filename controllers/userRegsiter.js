@@ -1,4 +1,4 @@
-const patientModel = require("../models/user.js");
+const userModel = require("../models/user.js");
 
 const userRegister = async (req, res) => {
     const userdata = {
@@ -13,12 +13,12 @@ const userRegister = async (req, res) => {
     };
 
     try {
-        const check = await patientModel.findOne({ email: userdata.email });
+        const check = await userModel.findOne({ email: userdata.email });
 
         if (check) {
             res.json("exist");
         } else {
-            await patientModel.create(userdata);
+            await userModel.create(userdata);
             res.json("notexists");
         }
     } catch (error) {
