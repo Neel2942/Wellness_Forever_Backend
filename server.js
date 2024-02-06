@@ -10,6 +10,7 @@ const userLogin = require("./controllers/userLogin.js");
 const getPatientDashboard = require("./controllers/patientDashboard.js");
 const paientDashboard = require("./controllers/patientDashboard.js");
 const doctorDashboard = require("./controllers/doctorDashboard.js");
+const adminDashboard = require("./controllers/adminDashboard.js");
 
 // Custom Middleware
 
@@ -36,3 +37,5 @@ app.post("/login", userLogin);
 app.get('/patientDashboard', paientDashboard);
 // Doctor Dashboard Route
 app.get('/doctorDashboard', doctorDashboard);
+// Admin Dashboard Route
+app.get('/adminDashboard',adminDashboard);

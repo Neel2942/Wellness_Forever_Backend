@@ -1,4 +1,4 @@
-const patientModel = require("../models/user.js");
+const userModel = require("../models/user.js");
 const bcrypt = require("bcrypt");
 
 const userLogin = async (req, res) => {
@@ -8,7 +8,7 @@ const userLogin = async (req, res) => {
     };
 
     try {
-        const check = await patientModel.findOne({ email: userdata.email });
+        const check = await userModel.findOne({ email: userdata.email });
 
         if (check) {
             const paswordCheck = await bcrypt.compare(userdata.password,check.password);
