@@ -14,7 +14,7 @@ const adminDashboard = async(req,res)=>{
         allUsers.push(userObject);
     }
     
-    return allUsers;
+    res.json(allUsers);
 
     
 
