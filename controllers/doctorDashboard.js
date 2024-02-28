@@ -1,3 +1,5 @@
+const userModel = require("../models/user.js");
+
 const doctorDashboard = async (req, res) => {
   const userdata = [
     {
