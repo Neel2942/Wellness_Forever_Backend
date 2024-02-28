@@ -13,6 +13,7 @@ const userLogin = async (req, res) => {
         if (check) {
             const paswordCheck = await bcrypt.compare(userdata.password,check.password);
             if(paswordCheck){
+                req.session.userId = check._id;
                 res.json("exist");
             } else {
                 res.json("incorrectPassword");

@@ -22,6 +22,11 @@ app.use(expressSession({
 }));
 global.loggeIn = null;
 
+app.use("*",(req,res,next)=>{
+  loggedIn = req.session.userId;
+  next();
+});
+
 // Listening Port
 const port = process.env.PORT || 4000;
 app.listen(port, () => {
