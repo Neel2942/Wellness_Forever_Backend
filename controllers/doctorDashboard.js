@@ -23,7 +23,7 @@ const doctorDashboard = async (req, res) => {
     },
 
     {
-      _id: 124,
+      _id: 125,
       no: 1,
       appointmentWith: "Karan Dhiman",
       date: "14/05/2024",
@@ -33,7 +33,7 @@ const doctorDashboard = async (req, res) => {
     },
 
     {
-      _id: 124,
+      _id: 126,
       no: 1,
       appointmentWith: "Swapnil Nanavati",
       date: "14/05/2024",
@@ -43,7 +43,7 @@ const doctorDashboard = async (req, res) => {
     },
 
     {
-      _id: 124,
+      _id: 127,
       no: 1,
       appointmentWith: "Kaisar Jamal",
       date: "14/05/2024",
@@ -53,7 +53,7 @@ const doctorDashboard = async (req, res) => {
     },
 
     {
-      _id: 124,
+      _id: 128,
       no: 1,
       appointmentWith: "Aniketh Kazi",
       date: "14/05/2024",
@@ -70,7 +70,7 @@ const doctorDashboard = async (req, res) => {
   if(user!=null){
     res.json(userdata);
   }else{
-    res.json("login")
+    res.json("notLoggedIn")
   }
   } catch (error) {
     console.error(error);

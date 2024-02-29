@@ -7,7 +7,6 @@ const adminDashboard = async(req,res)=>{
         });
         if(user!=null){
             const users = await userModel.find({});
-            console.log(users);
             let allUsers = [];
             for(i=0;i<users.length;i++ ){
                 const userObject={
@@ -20,14 +19,11 @@ const adminDashboard = async(req,res)=>{
             
             res.json(allUsers);
         }else{
-            res.json("login");
+            res.json("notLoggedIn");
         }
     }catch(e){
         console.error(e);
     }
-
-    
-
 }
 
 module.exports = adminDashboard;
