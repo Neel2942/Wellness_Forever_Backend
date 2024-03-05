@@ -10,6 +10,7 @@ const userRegister = async (req, res) => {
         age: req.body.age,
         userType: req.body.userType,
         specialization: req.body.specialization,
+        decription: req.body.description,
     };
 
     try {

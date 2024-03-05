@@ -13,6 +13,7 @@ const userSchema = new Schema({
     specialization:{type:String},
     reportId:{type:Number},
     prescriptionId:{type:Number},
+    description:{type:String}
 });
 
 userSchema.pre("save",function(next){
