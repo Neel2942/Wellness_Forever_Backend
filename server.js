@@ -12,6 +12,7 @@ const paientDashboard = require("./controllers/patientDashboard.js");
 const doctorDashboard = require("./controllers/doctorDashboard.js");
 const adminDashboard = require("./controllers/adminDashboard.js");
 const bookAppointment=require("./controllers/bookingAppointment.js");
+const doctorsList = require("./controllers/doctorsList.js");
 
 // Custom Middleware
 
@@ -44,6 +45,8 @@ app.get('/patientDashboard', paientDashboard);
 // Doctor Dashboard Route
 app.get('/doctorDashboard', doctorDashboard);
 // Admin Dashboard Route
-app.get('/adminDashboard',adminDashboard);
-//Booking Appointment
-app.post("/bookingAppointment",bookAppointment);
+app.get('/adminDashboard', adminDashboard);
+// Booking Appointment
+app.post("/bookingAppointment", bookAppointment);
+// Doctor's List
+app.get("/doctorsList", doctorsList);

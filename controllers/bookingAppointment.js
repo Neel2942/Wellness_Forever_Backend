@@ -1,17 +1,16 @@
+const session = require("express-session");
 const bookingAppointmentModel = require("../models/bookAppointmentModel.js");
 
 const bookingAppointment = async (req, res) => {
 
     try{
         const bookingAppointmentData = {
-            fullName:req.body.fullName,
-            email:req.body.email,
-            phoneNumber:req.body.phoneNumber,
-            address:req.body.address,
-            category:req.body.category,
+            patientId:req.session.userId,
+            doctorId:req.body.doctorId,
             date:req.body.date,
             time:req.body.time,
-            reason:req.body.reason,
+            symptoms:req.body.symptoms,
+            status:req.body.status
         };
         const newAppointment = new bookingAppointmentModel(bookingAppointmentData);
         await newAppointment.save();

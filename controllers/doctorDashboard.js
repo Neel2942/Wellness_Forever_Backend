@@ -7,7 +7,7 @@ const doctorDashboard = async (req, res) => {
       _id: loggedIn
   });
   if(user!=null){
-    res.json(userdata);
+    res.json(userData);
   }else{
     res.json("notLoggedIn")
   }
