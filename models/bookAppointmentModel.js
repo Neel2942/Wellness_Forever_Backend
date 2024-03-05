@@ -12,7 +12,6 @@ const bookAppointmentSchema = new Schema({
     reason:{type:String},
 });
 
-
 const bookAppointmentModel = new mongoose.model("bookAppointment",bookAppointmentSchema);
 module.exports = bookAppointmentModel;
 
