@@ -11,6 +11,7 @@ const doctorsList = async (req, res) => {
     for (let i = 0; i < doctorUser.length; i++) {
       userData = 
         {
+          id:doctorUser[i]._id,
           fullName: doctorUser[i].firstName + " " + doctorUser[i].lastName,
           email: doctorUser[i].email,
           age: doctorUser[i].age,
