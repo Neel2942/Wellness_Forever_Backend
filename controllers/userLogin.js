@@ -14,7 +14,20 @@ const userLogin = async (req, res) => {
             const paswordCheck = await bcrypt.compare(userdata.password,check.password);
             if(paswordCheck){
                 req.session.userId = check._id;
-                res.json("exist");
+                const user = await userModel.findOne({_id:req.session.userId})
+                console.log(user);
+                const userData = [{
+                    _id: user._id,
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    email: user.email,
+                    phoneNumber: user.phoneNumber,
+                    age: user.age,
+                    userType: user.userType,
+                    specialization: user.specialization
+                }
+                ]
+                res.json(userData);
             } else {
                 res.json("incorrectPassword");
             }
