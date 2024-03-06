@@ -1,74 +1,34 @@
 const userModel = require("../models/user.js");
-const paientDashboard = async (req, res) => {
-    const userdata = [
-        {
-            _id:123,
-            no: 1,
-            appointmentWith: "Dr. Zaid Alam",
-            date:"10/05/2024",
-            time: "3.25 pm",
-            status: "Upcoming",
-            option: "Cancel",
-        },
-  
-        {
-            _id:124,
-            no: 1,
-            appointmentWith: "Dr. Neel Patel",
-            date:"14/05/2024",
-            time: "6.00 pm",
-            status: "Upcoming",
-            option: "Cancel",
-        },
-  
-        {
-            _id:125,
-            no: 1,
-            appointmentWith: "Dr. Karan Dhiman",
-            date:"14/05/2024",
-            time: "6.00 pm",
-            status: "Upcoming",
-            option: "Cancel",
-        },
-  
-        {
-            _id:126,
-            no: 1,
-            appointmentWith: "Dr. Swapnil Nanavati",
-            date:"14/05/2024",
-            time: "6.00 pm",
-            status: "Upcoming",
-            option: "Cancel",
-        },
-  
-        {
-            _id:127,
-            no: 1,
-            appointmentWith: "Dr. Kaisar Jamal",
-            date:"14/05/2024",
-            time: "6.00 pm",
-            status: "Upcoming",
-            option: "Cancel",
-        },
-  
-        {
-            _id:128,
-            no: 1,
-            appointmentWith: "Dr. Aniketh Kazi",
-            date:"14/05/2024",
-            time: "6.00 pm",
-            status: "Upcoming",
-            option: "Cancel",
-        },
-  
-    ];
-  
+const bookAppointmentModel = require("../models/bookAppointmentModel.js");
+const paientDashboard = async (req, res) => {  
     try {
+        const patientId = req.session.userId;
+        let appoinmentList = [];
         const user = await userModel.findOne({
             _id: loggedIn
         });
         if(user!=null){
-        res.json(userdata);
+            const patientAppoinmentData = await bookAppointmentModel.find({patientId:patientId});
+        
+            for (let i = 0; i < patientAppoinmentData.length; i++) {
+
+                let userData = await userModel.findOne({_id:patientAppoinmentData[i].doctorId});
+                let count=i;
+                let appoinmentDate = new Date(patientAppoinmentData[i].date);
+                let formattedAppoinmentDate = appoinmentDate.toISOString().split('T')[0];
+
+                appoinmentData = 
+                  {
+                    no: ++count,
+                    appointmentWith: userData.firstName + " " + userData.lastName,
+                    date: formattedAppoinmentDate,
+                    time: patientAppoinmentData[i].time,
+                    symptoms: patientAppoinmentData[i].symptoms,
+                    status: patientAppoinmentData[i].status,
+                  },
+                  appoinmentList.push(appoinmentData);
+            }
+            res.json(appoinmentList);
         }else{
             res.json("notLoggedIn")
         }  
