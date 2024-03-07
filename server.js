@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(expressSession({
   secret:"secret"
 }));
-global.loggeIn = null;
+global.loggedIn = null;
 
 app.use("*",(req,res,next)=>{
   loggedIn = req.session.userId;
