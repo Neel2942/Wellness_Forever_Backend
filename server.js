@@ -15,6 +15,7 @@ const bookAppointment=require("./controllers/bookingAppointment.js");
 const doctorsList = require("./controllers/doctorsList.js");
 const cancelBooking = require("./controllers/cancelBooking.js");
 const adminCancelRequest = require("./controllers/adminCancelRequest.js");
+const updateprofile = require("./controllers/updateprofile.js");
 
 // Custom Middleware
 
@@ -56,3 +57,5 @@ app.get("/doctorsList", doctorsList);
 app.post("/cancelAppointment",cancelBooking);
 // Admin Cancel Request
 app.post("/cancelRequest",adminCancelRequest);
+//User profile edit
+app.post("/updateuser", updateprofile);
