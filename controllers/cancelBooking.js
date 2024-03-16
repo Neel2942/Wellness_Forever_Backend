@@ -1,6 +1,4 @@
 const cancelAppointmentModel = require("../models/cancelAppointmentModel.js");
-const userModel = require("../models/user.js");
-const bookAppointmentModel = require("../models/bookAppointmentModel.js");
 
 const cancelBooking = async(req,res) =>{
     const cancelAppointmentData = {
