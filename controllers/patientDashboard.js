@@ -25,9 +25,11 @@ const paientDashboard = async (req, res) => {
                     time: patientAppoinmentData[i].time,
                     symptoms: patientAppoinmentData[i].symptoms,
                     status: patientAppoinmentData[i].status,
+                    userType: "patient"
                   },
                   appoinmentList.push(appoinmentData);
             }
+            console.log(appoinmentList);
             res.json(appoinmentList);
         }else{
             res.json("notLoggedIn")

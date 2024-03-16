@@ -25,6 +25,7 @@ const doctorDashboard = async (req, res) => {
           time: doctorAppoinmentData[i].time,
           symptoms: doctorAppoinmentData[i].symptoms,
           status: doctorAppoinmentData[i].status,
+          userType: "doctor"
         },
           appoinmentList.push(appoinmentData);
       }
