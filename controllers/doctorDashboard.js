@@ -20,6 +20,7 @@ const doctorDashboard = async (req, res) => {
 
         appoinmentData = {
           no: ++count,
+          appointmentId:doctorAppoinmentData[i]._id,
           appointmentWith: userData.firstName + " " + userData.lastName,
           date: formattedAppoinmentDate,
           time: doctorAppoinmentData[i].time,
