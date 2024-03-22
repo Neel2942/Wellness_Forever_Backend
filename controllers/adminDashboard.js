@@ -8,6 +8,7 @@ const adminDashboard = async(req,res)=>{
         if(user!=null){
             const users = await userModel.find({});
             let allUsers = [];
+            
             for(i=0;i<users.length;i++ ){
                 const userObject={
                     fullName: users[i].firstName + ' ' + users[i].lastName,
