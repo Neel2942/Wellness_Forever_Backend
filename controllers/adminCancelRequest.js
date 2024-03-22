@@ -17,7 +17,7 @@ const adminCancelRequest = async(req,res) => {
 
             if(doctorData && patientData){
                 const cancelAppointment = await cancelAppointmentModel.findByIdAndUpdate(cancelAppointmentId,{status:"Cancelled"});
-                const bookAppointmentStatus = await bookAppointmentModel.findByIdAndUpdate(cancelAppointment._id,{status:"Cancelled"});
+                const bookAppointmentStatus = await bookAppointmentModel.findByIdAndUpdate(cancelAppointment.appointmentId,{status:"Cancelled"});
                 if(cancelAppointment && bookAppointmentStatus){
                     res.send("Cancelled");
                 }
