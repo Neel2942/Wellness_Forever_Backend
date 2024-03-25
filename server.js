@@ -18,7 +18,7 @@ const adminCancelRequest = require("./controllers/adminCancelRequest.js");
 const updateprofile = require("./controllers/updateprofile.js");
 const cancelAppointmentList = require("./controllers/cancelAppointmentList.js");
 const adminAppointmentList = require("./controllers/adminAppointmentList.js");
-const userLogout = require("./controllers/Logout.js");
+const logout = require("./controllers/logoutController.js")
 
 // Custom Middleware
 
@@ -67,4 +67,4 @@ app.get("/cancelAppoinmentList",cancelAppointmentList);
 // Admin Appointment List
 app.get("/adminAppointmentList",adminAppointmentList);
 //user logout
-app.get("/logout",userLogout);
+app.get("/logout",logout);
