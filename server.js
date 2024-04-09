@@ -2,13 +2,13 @@ require("dotenv").config();
 require("./db/dbinit.js");
 const express = require("express");
 const expressSession = require("express-session");
-const cors = require("cors");
+// const cors = require("cors");
 const app = express();
 
-app.use(cors({
-  origin: "https://wellness-forever-frontend.vercel.app",
-  credentials:"true"
-}))
+// app.use(cors({
+//   origin: "https://wellness-forever-frontend.vercel.app",
+//   credentials:"true"
+// }))
 
 // Controllers
 const userRegister = require("./controllers/userRegsiter.js");
