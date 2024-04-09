@@ -15,11 +15,9 @@ const doctorRecords = async (req, res) => {
       let userData = await userModel.findOne({
         _id: doctorAppoinmentData[i].patientId,
       });
-      console.log(doctorAppoinmentData[i]._id);
       let prescriptionData = await prescriptionModel.findOne({
         appointmentId: doctorAppoinmentData[i]._id,
       });
-      console.log(doctorId);
       let count = i;
       let appoinmentDate = new Date(doctorAppoinmentData[i].date);
       let formattedAppoinmentDate = appoinmentDate.toISOString().split("T")[0];

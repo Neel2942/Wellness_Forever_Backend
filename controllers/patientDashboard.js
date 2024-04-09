@@ -28,7 +28,6 @@ const paientDashboard = async (req, res) => {
       },
         appoinmentList.push(appoinmentData);
     }
-    console.log(appoinmentList);
     res.json(appoinmentList);
   } catch (error) {
     console.error(error);

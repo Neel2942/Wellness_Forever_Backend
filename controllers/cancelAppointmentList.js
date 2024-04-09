@@ -14,10 +14,9 @@ const cancelAppointmentList = async (req, res) => {
         let cancelAppointmentList = await cancelAppointmentModel.findOne({
           appointmentId: appoinmentList[i]._id,
         });
-        console.log(cancelAppointmentList);
         let patientData = await userModel.findById(appoinmentList[i].patientId);
         let doctorData = await userModel.findById(appoinmentList[i].doctorId);
-        (cancelListData = {
+        cancelListData = {
           cancelAppointmentId: cancelAppointmentList._id,
           patientName: patientData.firstName + " " + patientData.lastName,
           doctorName:
@@ -25,7 +24,7 @@ const cancelAppointmentList = async (req, res) => {
           time: appoinmentList[i].time,
           date: appoinmentList[i].date,
           reason: cancelAppointmentList.reason,
-        }),
+        },
           cancelList.push(cancelListData);
       }
       res.send(cancelList);

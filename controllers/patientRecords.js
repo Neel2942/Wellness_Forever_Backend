@@ -19,7 +19,6 @@ const patientRecords = async (req, res) => {
       let prescriptionData = await prescriptionModel.findOne({
         appointmentId: patientAppoinmentData[i]._id,
       });
-      console.log(prescriptionData);
       let count = i;
       let appoinmentDate = new Date(patientAppoinmentData[i].date);
       let formattedAppoinmentDate = appoinmentDate.toISOString().split("T")[0];
@@ -36,7 +35,6 @@ const patientRecords = async (req, res) => {
       },
         recordList.push(recordData);
     }
-    console.log(recordList);
     res.json(recordList);
   } catch (error) {
     console.error(error);
