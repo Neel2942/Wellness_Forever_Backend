@@ -2,12 +2,17 @@ require("dotenv").config();
 require("./db/dbinit.js");
 const express = require("express");
 const expressSession = require("express-session");
+const cors = require("cors");
 const app = express();
+
+app.use(cors({
+  origin: "https://wellness-forever-frontend.vercel.app",
+  credentials:"true"
+}))
 
 // Controllers
 const userRegister = require("./controllers/userRegsiter.js");
 const userLogin = require("./controllers/userLogin.js");
-const getPatientDashboard = require("./controllers/patientDashboard.js");
 const paientDashboard = require("./controllers/patientDashboard.js");
 const doctorDashboard = require("./controllers/doctorDashboard.js");
 const adminDashboard = require("./controllers/adminDashboard.js");
