@@ -63,7 +63,7 @@ app.get('/doctorDashboard', doctorDashboard);
 // Doctor Prescription Route
 app.post('/doctorPrescription',doctorPrescription);
 // Doctor Records Route
-app.get("doctorRecords",doctorRecords);
+app.get("/doctorRecords",doctorRecords);
 // Admin Dashboard Route
 app.get('/adminDashboard', adminDashboard);
 // Booking Appointment

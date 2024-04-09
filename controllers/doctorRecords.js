@@ -10,12 +10,14 @@ const doctorRecords = async(req,res)=>{
           _id: loggedIn,
         });
         if (user != null) {
-          const doctorAppoinmentData = await bookAppointmentModel.find({doctorId: doctorId});
+          const doctorAppoinmentData = await bookAppointmentModel.find({doctorId: doctorId,status:"Upcoming"});
     
           for (let i = 0; i < doctorAppoinmentData.length; i++) {
     
             let userData = await userModel.findOne({ _id: doctorAppoinmentData[i].patientId });
-            let prescriptionData = await prescriptionModel.findOne({appointmentId:doctorAppoinmentData._id});
+            console.log(doctorAppoinmentData[i]._id);
+            let prescriptionData = await prescriptionModel.findOne({appointmentId:doctorAppoinmentData[i]._id});
+            console.log(doctorId)
             let count = i;
             let appoinmentDate = new Date(doctorAppoinmentData[i].date);
             let formattedAppoinmentDate = appoinmentDate.toISOString().split("T")[0];
@@ -31,7 +33,7 @@ const doctorRecords = async(req,res)=>{
               note:prescriptionData.note,
               userType: "doctor"
             },
-            recordList.push(appoinmentData);
+            recordList.push(recordData);
           }
           res.json(recordList);
         } else {
