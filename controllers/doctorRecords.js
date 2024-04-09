@@ -10,7 +10,7 @@ const doctorRecords = async(req,res)=>{
           _id: loggedIn,
         });
         if (user != null) {
-          const doctorAppoinmentData = await bookAppointmentModel.find({doctorId: doctorId,status:"Upcoming"});
+          const doctorAppoinmentData = await bookAppointmentModel.find({doctorId: doctorId,status:"Completed"});
     
           for (let i = 0; i < doctorAppoinmentData.length; i++) {
     

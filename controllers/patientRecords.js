@@ -11,7 +11,7 @@ try{
         _id: loggedIn
     });
     if(user!=null){
-        const patientAppoinmentData = await bookAppointmentModel.find({patientId:patientId,status:"Upcoming"});
+        const patientAppoinmentData = await bookAppointmentModel.find({patientId:patientId,status:"Completed"});
     
         for (let i = 0; i < patientAppoinmentData.length; i++) {
 

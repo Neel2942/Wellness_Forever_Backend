@@ -1,3 +1,4 @@
+const bookAppointmentModel = require("../models/bookAppointmentModel");
 const prescriptionModel = require("../models/prescription");
 
 const doctorPrescription = async(req,res) =>{
@@ -13,7 +14,10 @@ const doctorPrescription = async(req,res) =>{
     
         const prescriptionDB = await prescriptionModel.create(prescriptionData);
         if(prescriptionDB){
-            res.json("prescriptionAdded");
+            const statusUpdate = await bookAppointmentModel.findByIdAndUpdate(req.body.appointmentId,{status:"Completed"});
+            if(statusUpdate){
+                res.json("prescriptionAdded");
+            }
         }else{
             res.json("prescriptionNotAddes");
         }
