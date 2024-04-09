@@ -25,6 +25,7 @@ const cancelAppointmentList = require("./controllers/cancelAppointmentList.js");
 const adminAppointmentList = require("./controllers/adminAppointmentList.js");
 const logout = require("./controllers/logoutController.js");
 const doctorPrescription = require("./controllers/doctorPrescription.js");
+const patientRecords = require("./controllers/patientRecords.js");
 
 // Custom Middleware
 
@@ -54,6 +55,8 @@ app.post("/signup", userRegister);
 app.post("/login", userLogin);
 // Patient Dashboard Route
 app.get('/patientDashboard', paientDashboard);
+// Patient Records Route
+app.get("/patientRecords",patientRecords);
 // Doctor Dashboard Route
 app.get('/doctorDashboard', doctorDashboard);
 // Doctor Prescription Route
