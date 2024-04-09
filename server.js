@@ -26,6 +26,7 @@ const adminAppointmentList = require("./controllers/adminAppointmentList.js");
 const logout = require("./controllers/logoutController.js");
 const doctorPrescription = require("./controllers/doctorPrescription.js");
 const patientRecords = require("./controllers/patientRecords.js");
+const doctorRecords = require("./controllers/doctorRecords.js");
 
 // Custom Middleware
 
@@ -61,6 +62,8 @@ app.get("/patientRecords",patientRecords);
 app.get('/doctorDashboard', doctorDashboard);
 // Doctor Prescription Route
 app.post('/doctorPrescription',doctorPrescription);
+// Doctor Records Route
+app.get("doctorRecords",doctorRecords);
 // Admin Dashboard Route
 app.get('/adminDashboard', adminDashboard);
 // Booking Appointment
