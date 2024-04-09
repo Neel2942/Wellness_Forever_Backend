@@ -20,7 +20,7 @@ const bookAppointment=require("./controllers/bookingAppointment.js");
 const doctorsList = require("./controllers/doctorsList.js");
 const cancelBooking = require("./controllers/cancelBooking.js");
 const adminCancelRequest = require("./controllers/adminCancelRequest.js");
-const updateprofile = require("./controllers/updateprofile.js");
+const updateProfile = require("./controllers/updateProfile.js");
 const cancelAppointmentList = require("./controllers/cancelAppointmentList.js");
 const adminAppointmentList = require("./controllers/adminAppointmentList.js");
 const logout = require("./controllers/logoutController.js");
@@ -84,7 +84,7 @@ app.post("/cancelAppointment", authMiddleware, cancelBooking);
 // Admin Cancel Request
 app.post("/cancelRequest", authMiddleware, adminCancelRequest);
 // User profile edit
-app.post("/updateuser", authMiddleware, updateprofile);
+app.post("/updateuser", authMiddleware, updateProfile);
 
 // ----------------------Admin----------------------
 

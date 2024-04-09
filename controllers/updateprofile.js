@@ -1,6 +1,6 @@
 const userModel = require("../models/user.js");
 
-const updateprofile = async (req, res) => {
+const updateProfile = async (req, res) => {
     try {
         const userdata = {
             firstName: req.body.firstName,
@@ -24,4 +24,4 @@ const updateprofile = async (req, res) => {
     }
 }
 
-module.exports = updateprofile;
+module.exports = updateProfile;
