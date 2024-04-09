@@ -1,16 +1,15 @@
 const userModel = require("../models/user.js");
 
 const updateprofile = async (req, res) => {
-    const userdata = {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        phoneNumber: req.body.phoneNumber,
-        age: req.body.age,
-       
-    };
-
     try {
+        const userdata = {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            phoneNumber: req.body.phoneNumber,
+            age: req.body.age,
+           
+        };
         const check = await userModel.findByIdAndUpdate(loggedIn,userdata);
 
         if (check) {
@@ -21,7 +20,7 @@ const updateprofile = async (req, res) => {
         }
     } catch (error) {
         console.error(error);
-        res.status(500).json("error");
+        res.status(500).json({ error: 'Internal server error' });
     }
 }
 

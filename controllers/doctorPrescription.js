@@ -22,7 +22,8 @@ const doctorPrescription = async(req,res) =>{
             res.json("prescriptionNotAddes");
         }
     }catch(error){
-        console.log(error);
+        console.error(error);
+        res.status(500).json({ error: 'Internal server error' });
     }
 
 }

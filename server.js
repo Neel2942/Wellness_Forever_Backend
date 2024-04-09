@@ -29,6 +29,7 @@ const patientRecords = require("./controllers/patientRecords.js");
 const doctorRecords = require("./controllers/doctorRecords.js");
 
 // Custom Middleware
+const authMiddleware = require("./middlewares/authMiddleware.js");
 
 // Middlewares
 app.use(express.json());
@@ -50,35 +51,47 @@ app.listen(port, () => {
 });
 
 
+// ----------------------Auth----------------------
+
 // User Registration Route
-app.post("/signup", userRegister);
+app.post("/signup", authMiddleware, userRegister);
 // User Login Route
-app.post("/login", userLogin);
-// Patient Dashboard Route
-app.get('/patientDashboard', paientDashboard);
-// Patient Records Route
-app.get("/patientRecords",patientRecords);
-// Doctor Dashboard Route
-app.get('/doctorDashboard', doctorDashboard);
-// Doctor Prescription Route
-app.post('/doctorPrescription',doctorPrescription);
-// Doctor Records Route
-app.get("/doctorRecords",doctorRecords);
-// Admin Dashboard Route
-app.get('/adminDashboard', adminDashboard);
-// Booking Appointment
-app.post("/bookingAppointment", bookAppointment);
-// Doctor's List
-app.get("/doctorsList", doctorsList);
-// Cancel Appointment
-app.post("/cancelAppointment",cancelBooking);
-// Admin Cancel Request
-app.post("/cancelRequest",adminCancelRequest);
-// User profile edit
-app.post("/updateuser", updateprofile);
-// Cancel Appointment List
-app.get("/cancelAppoinmentList",cancelAppointmentList);
-// Admin Appointment List
-app.get("/adminAppointmentList",adminAppointmentList);
+app.post("/login", authMiddleware, userLogin);
 //user logout
-app.get("/logout",logout);
+app.get("/logout", authMiddleware, logout);
+
+// ----------------------Patient----------------------
+
+// Patient Dashboard Route
+app.get('/patientDashboard', authMiddleware, paientDashboard);
+// Patient Records Route
+app.get("/patientRecords", authMiddleware, patientRecords);
+
+// ----------------------Doctor----------------------
+
+// Doctor Dashboard Route
+app.get('/doctorDashboard', authMiddleware, doctorDashboard);
+// Doctor Prescription Route
+app.post('/doctorPrescription',authMiddleware, doctorPrescription);
+// Doctor Records Route
+app.get("/doctorRecords",authMiddleware, doctorRecords);
+// Booking Appointment
+app.post("/bookingAppointment", authMiddleware, bookAppointment);
+// Doctor's List
+app.get("/doctorsList", authMiddleware,doctorsList);
+// Cancel Appointment
+app.post("/cancelAppointment", authMiddleware, cancelBooking);
+// Admin Cancel Request
+app.post("/cancelRequest", authMiddleware, adminCancelRequest);
+// User profile edit
+app.post("/updateuser", authMiddleware, updateprofile);
+
+// ----------------------Admin----------------------
+
+// Admin Dashboard Route
+app.get('/adminDashboard', authMiddleware, adminDashboard);
+// Cancel Appointment List
+app.get("/cancelAppoinmentList", authMiddleware, cancelAppointmentList);
+// Admin Appointment List
+app.get("/adminAppointmentList", authMiddleware, adminAppointmentList);
+
