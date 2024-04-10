@@ -6,7 +6,7 @@ const cancelBooking = async (req, res) => {
     const cancelAppointmentData = {
       appointmentId: req.body.appointmentId,
       reason: req.body.reason,
-      status: "requested",
+      status: "Requested",
     };
 
     const cancelAppointment = await cancelAppointmentModel.create(
@@ -20,7 +20,7 @@ const cancelBooking = async (req, res) => {
     if (cancelAppointment && bookAppointmentStatus) {
       res.send("Requested");
     } else {
-      res.send("failed");
+      res.send("Failed");
     }
   } catch (error) {
     console.error(error);

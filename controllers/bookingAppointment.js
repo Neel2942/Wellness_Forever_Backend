@@ -12,7 +12,7 @@ const bookingAppointment = async (req, res) => {
     };
     const newAppointment = new bookingAppointmentModel(bookingAppointmentData);
     await newAppointment.save();
-    res.json("Booked");
+    res.send("Booked");
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Booking Failed" });

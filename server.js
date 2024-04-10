@@ -54,11 +54,11 @@ app.listen(port, () => {
 // ----------------------Auth----------------------
 
 // User Registration Route
-app.post("/signup", authMiddleware, userRegister);
+app.post("/signup", userRegister);
 // User Login Route
-app.post("/login", authMiddleware, userLogin);
+app.post("/login", userLogin);
 //user logout
-app.get("/logout", authMiddleware, logout);
+app.get("/logout", logout);
 
 // ----------------------Patient----------------------
 
