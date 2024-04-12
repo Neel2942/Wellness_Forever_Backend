@@ -25,7 +25,7 @@ const patientRecords = async (req, res) => {
 
       recordData = {
         no: ++count,
-        appointmentWith: "Dr" + userData.firstName + " " + userData.lastName,
+        appointmentWith: "Dr" + " " +userData.firstName + " " + userData.lastName,
         date: formattedAppoinmentDate,
         time: patientAppoinmentData[i].time,
         symptoms: patientAppoinmentData[i].symptoms,
