@@ -16,13 +16,15 @@ const cancelAppointmentList = async (req, res) => {
         });
         let patientData = await userModel.findById(appoinmentList[i].patientId);
         let doctorData = await userModel.findById(appoinmentList[i].doctorId);
+        let cancelAppoinmentDate = new Date(appoinmentList[i].date);
+        let formattedCancelAppoinmentDate = cancelAppoinmentDate.toISOString().split("T")[0];
         cancelListData = {
           cancelAppointmentId: cancelAppointmentList._id,
           patientName: patientData.firstName + " " + patientData.lastName,
           doctorName:
             "Dr" + " " + doctorData.firstName + " " + doctorData.lastName,
           time: appoinmentList[i].time,
-          date: appoinmentList[i].date,
+          date: formattedCancelAppoinmentDate,
           reason: cancelAppointmentList.reason,
         },
           cancelList.push(cancelListData);

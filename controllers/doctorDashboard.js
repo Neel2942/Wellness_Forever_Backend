@@ -7,7 +7,7 @@ const doctorDashboard = async (req, res) => {
     let appoinmentList = [];
     const doctorAppoinmentData = await bookAppointmentModel.find({
       doctorId: doctorId,
-      status: { $in: ["Upcoming", "Cancelled", "Requested"] },
+      status: { $in: ["Upcoming", "Requested"] },
     });
 
     for (let i = 0; i < doctorAppoinmentData.length; i++) {
