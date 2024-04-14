@@ -7,6 +7,7 @@ const app = express();
 
 app.use(cors({
   origin: "https://wellness-forever-frontend.vercel.app",
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials:"true"
 }))
 
