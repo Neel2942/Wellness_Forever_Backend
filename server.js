@@ -2,7 +2,6 @@ require("dotenv").config();
 require("./db/dbinit.js");
 const express = require("express");
 const expressSession = require("express-session");
-const createProxyMiddleware  = require('http-proxy-middleware');
 const cors = require("cors");
 const app = express();
 
