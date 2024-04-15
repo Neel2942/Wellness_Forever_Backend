@@ -6,16 +6,6 @@ const createProxyMiddleware  = require('http-proxy-middleware');
 const cors = require("cors");
 const app = express();
 
-
-// Define proxy routes
-app.use('/api', createProxyMiddleware({
-  target: 'https://wellnessforever.onrender.com',
-  changeOrigin: true,
-  pathRewrite: {
-    '^/api': '', // Remove '/api' from the request path
-  },
-}));
-
 app.use(cors({
   origin: "https://wellness-forever-frontend.vercel.app",
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
