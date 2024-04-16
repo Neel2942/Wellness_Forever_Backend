@@ -2,6 +2,8 @@ require("dotenv").config();
 require("./db/dbinit.js");
 const express = require("express");
 const expressSession = require("express-session");
+const RedisStore = require('connect-redis')(session);
+const redis = require('ioredis');
 const redisClient = new redis();
 const cors = require("cors");
 const app = express();
