@@ -1,5 +1,5 @@
 const userModel = require("../models/user");
-const sessionModel = require("../models/session.js");
+const {sessionModel} = require("../models/session.js");
 
 const authMiddleware = async(req,res,next)=>{
   const sessionUserId = await sessionModel.find();
