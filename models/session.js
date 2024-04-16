@@ -18,6 +18,7 @@ const createSession = async (userId) => {
         const session = new sessionModel({ userId });
         await session.save();
         console.log('Session created:', session);
+        return session;
     } catch (error) {
         console.error('Error creating session:', error);
     }
