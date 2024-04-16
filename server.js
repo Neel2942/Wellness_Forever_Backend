@@ -2,6 +2,8 @@ require("dotenv").config();
 require("./db/dbinit.js");
 const express = require("express");
 const expressSession = require("express-session");
+const MongoDBStore = require('connect-mongodb-session')(expressSession);
+const DBURL = process.env.DBURL;
 const cors = require("cors");
 const app = express();
 
@@ -35,6 +37,10 @@ const authMiddleware = require("./middlewares/authMiddleware.js");
 // Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+const store = new MongoDBStore({
+  uri: DBURL,
+  collection: 'sessions'
+});
 app.use(expressSession({
   secret: 'secret',
   resave: false,

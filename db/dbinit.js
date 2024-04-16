@@ -1,16 +1,9 @@
 require('dotenv').config();
-const expressSession = require("express-session");
-const MongoDBStore = require('connect-mongodb-session')(expressSession);
 const mongoose = require('mongoose');
 const DBURL = process.env.DBURL;
 const db = mongoose.connect(DBURL,{
     useNewUrlParser: true,
     useUnifiedTopology: true
-});
-
-const store = new MongoDBStore({
-    uri: DBURL,
-    collection: 'sessions'
 });
 
 if(db){
