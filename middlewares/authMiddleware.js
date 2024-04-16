@@ -1,12 +1,13 @@
 const userModel = require("../models/user");
+const {sessionModel,createSession,deleteSession} = require("../models/session.js");
 
 const authMiddleware = async(req,res,next)=>{
-  console.log(req.session.userId);
-  if (!req.session.userId) {
-    console.log("User", req.session.userId);
-    return res.json("notLoggedIn");
+  const sessionUserId = await sessionModel.find();
+  if (sessionUserId) {
+    next();
   }
-  next();
+  console.log("User", sessionUserId[0]);
+  return res.json("notLoggedIn");
 }
 
 module.exports = authMiddleware
