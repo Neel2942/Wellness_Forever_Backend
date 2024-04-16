@@ -8,6 +8,7 @@ const paientDashboard = async (req, res) => {
       patientId: patientId,
       status:{ $in: ["Upcoming","Requested"] }
     });
+    console.log(patientAppoinmentData);
 
     for (let i = 0; i < patientAppoinmentData.length; i++) {
       let userData = await userModel.findOne({
