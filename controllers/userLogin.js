@@ -1,5 +1,6 @@
 const userModel = require("../models/user.js");
-const {sessionModel,createSession,deleteSession} = require("../models/session.js");
+const sessionModel = require('./sessionModel');
+const createSession = require('./sessionModel').createSession;
 const bcrypt = require("bcrypt");
 
 const userLogin = async (req, res) => {
@@ -16,7 +17,6 @@ const userLogin = async (req, res) => {
         check.password
       );
       if (paswordCheck) {
-        req.session.userId = check._id;
         createSession(check._id);
         console.log(req.session.userId);
         const user = await userModel.findOne({ _id: req.session.userId });
