@@ -47,12 +47,6 @@ app.use(expressSession({
   saveUninitialized: false,
   store: store
 }));
-global.loggedIn = null;
-
-app.use("*",(req,res,next)=>{
-  loggedIn = req.session.userId;
-  next();
-});
 
 // Listening Port
 const port = process.env.PORT || 4000;
