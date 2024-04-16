@@ -6,7 +6,7 @@ const authMiddleware = async(req,res,next)=>{
   if (sessionUserId) {
     next();
   }else{
-    console.log("User", sessionUserId[0]);
+    console.log("User", sessionUserId);
     return res.json("notLoggedIn");
   }
 }
