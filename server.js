@@ -2,9 +2,6 @@ require("dotenv").config();
 require("./db/dbinit.js");
 const express = require("express");
 const expressSession = require("express-session");
-const RedisStore = require('connect-redis')(session);
-const redis = require('ioredis');
-const redisClient = new redis();
 const cors = require("cors");
 const app = express();
 
@@ -39,11 +36,7 @@ const authMiddleware = require("./middlewares/authMiddleware.js");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(expressSession({
-    store: new RedisStore({ client: redisClient }),
-    secret: 'secret',
-    resave: false,
-    saveUninitialized: false,
-    cookie: { secure: false }
+  secret:"secret"
 }));
 global.loggedIn = null;
 
