@@ -1,5 +1,5 @@
 const userModel = require("../models/user.js");
-const {sessionModel,createSesssion} = require('../models/session.js');
+const {sessionModel,createSession} = require('../models/session.js');
 const bcrypt = require("bcrypt");
 
 const userLogin = async (req, res) => {
