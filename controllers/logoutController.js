@@ -1,5 +1,4 @@
-const sessionModel = require('../models/session.js');
-const deleteSession = require('../models/session.js').deleteSession;
+const {sessionModel,deleteSession} = require('../models/session.js');
 
 const logoutController = async(req, res) => {
   const sessionUserId = await sessionModel.find();

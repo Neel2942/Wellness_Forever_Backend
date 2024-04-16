@@ -33,4 +33,4 @@ const deleteSession = async (sessionId) => {
     }
 };
 
-module.exports = sessionModel;
+module.exports = {sessionModel,createSession,deleteSession};
