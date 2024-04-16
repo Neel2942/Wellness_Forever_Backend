@@ -1,8 +1,6 @@
 const {getUserIdFromSession} = require("../models/session.js");
 
 const authMiddleware = async(req,res,next)=>{
-  const userId = req.userId;
-  console.log(userId);
   const sessionUserId = await getUserIdFromSession();
   if (sessionUserId) {
     next();

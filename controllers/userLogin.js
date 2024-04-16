@@ -17,7 +17,8 @@ const userLogin = async (req, res) => {
       );
       if (paswordCheck) {
         await createSession(check._id);
-        req.userId = check._id;
+        req.session.userId = check._id;
+        console.log(req.session.userId);
         const user = await userModel.findOne({ _id: check._id });
         const userData = [
           {
