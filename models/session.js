@@ -26,7 +26,7 @@ const createSession = async (userId) => {
 // Delete a session document when user logs out or session expires
 const deleteSession = async (sessionId) => {
     try {
-        await Session.findByIdAndDelete(sessionId);
+        await sessionModel.findByIdAndDelete(sessionId);
         console.log('Session deleted');
     } catch (error) {
         console.error('Error deleting session:', error);
