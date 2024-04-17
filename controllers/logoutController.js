@@ -1,12 +1,10 @@
-const {sessionModel,getUserIdFromSession,deleteSession} = require('../models/session.js');
+const {sessionModel,deleteSession} = require('../models/session.js');
 
 const logoutController = async(req, res) => {
   const userId = await sessionModel.find();
   if(userId){
-    const sessionUserId = await getUserIdFromSession(userId[0]);
-    if(sessionUserId){
       // Destroy the session to logout the user
-      deleteSession(sessionUserId);
+      deleteSession(userId[0]);
       req.session.destroy((err) => {
         if (err) {
           console.error("Logout error:", err);
@@ -16,7 +14,6 @@ const logoutController = async(req, res) => {
         }
       });
     }
-  }
   }
   
   module.exports = logoutController;

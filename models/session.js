@@ -18,7 +18,6 @@ const createSession = async (userId) => {
         const session = new sessionModel({ userId });
         await session.save();
         console.log('Session created:', session);
-        return session;
     } catch (error) {
         console.error('Error creating session:', error);
     }
@@ -34,18 +33,4 @@ const deleteSession = async (sessionId) => {
     }
 };
 
-// Retrieve user ID from session document
-const getUserIdFromSession = async (sessionId) => {
-    try {
-        const session = await sessionModel.findById(sessionId);
-        if (session) {
-            return session.userId;
-        }
-        return null; // Session not found
-    } catch (error) {
-        console.error('Error retrieving user ID from session:', error);
-        return null;
-    }
-};
-
-module.exports = {sessionModel,createSession,deleteSession,getUserIdFromSession};
+module.exports = {sessionModel,createSession,deleteSession};
