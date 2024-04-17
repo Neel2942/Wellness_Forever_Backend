@@ -3,7 +3,9 @@ const userModel = require("../models/user.js");
 
 const adminAppointmentList = async (req, res) => {
   try {
-    const appointmentList = await bookAppointmentModel.find();
+    const appointmentList = await bookAppointmentModel.find({
+      status: { $in: ["Upcoming", "Requested"] }
+    });
 
     // Initialize an empty array to store the final results
     let finalResults = [];
