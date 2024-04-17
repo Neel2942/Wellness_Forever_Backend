@@ -5,12 +5,13 @@ const paientDashboard = async (req, res) => {
   try {
     const userId = await sessionModel.find();
     if(userId){
+      console.log(userId);
       let appoinmentList = [];
       const patientAppoinmentData = await bookAppointmentModel.find({
         patientId: userId[0],
         status:{ $in: ["Upcoming","Requested"] }
       });
-      console.log(patientAppoinmentData);
+      
   
       for (let i = 0; i < patientAppoinmentData.length; i++) {
         let userData = await userModel.findOne({
