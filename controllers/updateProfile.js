@@ -1,6 +1,7 @@
 const userModel = require("../models/user.js");
-
+const {sessionModel} = require("../models/session.js");
 const updateProfile = async (req, res) => {
+    const userId = await sessionModel.find();
     try {
         const userdata = {
             firstName: req.body.firstName,
@@ -10,10 +11,10 @@ const updateProfile = async (req, res) => {
             age: req.body.age,
            
         };
-        const check = await userModel.findByIdAndUpdate(loggedIn,userdata);
+        const check = await userModel.findByIdAndUpdate(userId[0],userdata);
 
         if (check) {
-            const updatedUser = await userModel.findById(loggedIn);
+            const updatedUser = await userModel.findById(userId[0]);
 
             const userData = [
                 {

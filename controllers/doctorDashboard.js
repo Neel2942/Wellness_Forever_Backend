@@ -1,12 +1,13 @@
 const userModel = require("../models/user.js");
 const bookAppointmentModel = require("../models/bookAppointmentModel.js");
+const {sessionModel} = require("../models/session.js");
 
 const doctorDashboard = async (req, res) => {
   try {
-    const doctorId = req.session.userId;
+    const userId = await sessionModel.find();
     let appoinmentList = [];
     const doctorAppoinmentData = await bookAppointmentModel.find({
-      doctorId: doctorId,
+      doctorId: userId,
       status: { $in: ["Upcoming", "Requested"] },
     });
 
