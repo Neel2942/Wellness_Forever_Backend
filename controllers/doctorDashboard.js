@@ -18,7 +18,7 @@ const doctorDashboard = async (req, res) => {
       let appoinmentDate = new Date(doctorAppoinmentData[i].date);
       let formattedAppoinmentDate = appoinmentDate.toISOString().split("T")[0];
 
-      (appoinmentData = {
+      appoinmentData = {
         no: ++count,
         appointmentId: doctorAppoinmentData[i]._id,
         appointmentWith: userData.firstName + " " + userData.lastName,
@@ -27,7 +27,7 @@ const doctorDashboard = async (req, res) => {
         symptoms: doctorAppoinmentData[i].symptoms,
         status: doctorAppoinmentData[i].status,
         userType: "doctor",
-      }),
+      },
         appoinmentList.push(appoinmentData);
     }
     res.json(appoinmentList);
