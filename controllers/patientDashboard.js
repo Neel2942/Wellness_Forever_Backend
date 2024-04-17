@@ -3,7 +3,7 @@ const bookAppointmentModel = require("../models/bookAppointmentModel.js");
 const {sessionModel} = require("../models/session.js");
 const paientDashboard = async (req, res) => {
   try {
-    const userId = await sessionModel.find();;
+    const userId = await sessionModel.find();
     let appoinmentList = [];
     const patientAppoinmentData = await bookAppointmentModel.find({
       patientId: userId[0],

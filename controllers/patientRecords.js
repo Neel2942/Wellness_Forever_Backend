@@ -5,7 +5,7 @@ const {sessionModel} = require("../models/session.js");
 
 const patientRecords = async (req, res) => {
   try {
-    const userId = await sessionModel.find();;
+    const userId = await sessionModel.find();
     let recordList = [];
 
     const patientAppoinmentData = await bookAppointmentModel.find({
