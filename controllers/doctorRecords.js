@@ -8,7 +8,7 @@ const doctorRecords = async (req, res) => {
     const userId = await sessionModel.find();;
     let recordList = [];
     const doctorAppoinmentData = await bookAppointmentModel.find({
-      doctorId: userId,
+      doctorId: userId[0],
       status: "Completed",
     });
 
