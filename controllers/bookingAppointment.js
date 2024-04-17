@@ -1,9 +1,10 @@
 const bookingAppointmentModel = require("../models/bookAppointmentModel.js");
-
+const {sessionModel} = require('../models/session.js');
 const bookingAppointment = async (req, res) => {
   try {
+    const userId = await sessionModel.find();
     const bookingAppointmentData = {
-      patientId: req.session.userId,
+      patientId: userId[0].userId,
       doctorId: req.body.doctorId,
       date: req.body.date,
       time: req.body.time,
