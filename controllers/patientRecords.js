@@ -9,7 +9,7 @@ const patientRecords = async (req, res) => {
     let recordList = [];
 
     const patientAppoinmentData = await bookAppointmentModel.find({
-      patientId: userId[0],
+      patientId: userId[0].userId,
       status: "Completed",
     });
 

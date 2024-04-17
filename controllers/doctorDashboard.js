@@ -7,7 +7,7 @@ const doctorDashboard = async (req, res) => {
     const userId = await sessionModel.find();
     let appoinmentList = [];
     const doctorAppoinmentData = await bookAppointmentModel.find({
-      doctorId: userId[0],
+      doctorId: userId[0].userId,
       status: { $in: ["Upcoming", "Requested"] },
     });
 

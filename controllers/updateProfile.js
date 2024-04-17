@@ -11,10 +11,10 @@ const updateProfile = async (req, res) => {
             age: req.body.age,
            
         };
-        const check = await userModel.findByIdAndUpdate(userId[0],userdata);
+        const check = await userModel.findByIdAndUpdate(userId[0].userId,userdata);
 
         if (check) {
-            const updatedUser = await userModel.findById(userId[0]);
+            const updatedUser = await userModel.findById(userId[0].userId);
 
             const userData = [
                 {
